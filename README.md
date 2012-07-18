@@ -19,17 +19,17 @@ Or install it yourself as:
 
 ## Usage
 
-#!/usr/bin/env ruby
-require 'motorcontrolboard'
+	#!/usr/bin/env ruby
+	require 'motorcontrolboard'
 
-#params for serial port
-initParams = {  'port' => "/dev/ttyUSB0",
-				'baud_rate' => 57600,
-				'vidpid' => '10c4:ea60'}
+	#params for serial port
+	initParams = {  'port' => "/dev/ttyUSB0",
+					'baud_rate' => 57600,
+					'vidpid' => '10c4:ea60'}
 
-@m = MotorControlBoard.new(initParams)
-@m.initData('init.yaml')
-@m.connect
+	@m = MotorControlBoard.new(initParams)
+	@m.initData('init.yaml')
+	@m.connect
 
 
 ## Contributing
