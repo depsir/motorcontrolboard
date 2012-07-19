@@ -220,7 +220,7 @@ class MotorControlBoard
             readBytes = []
             begin
                 Timeout::timeout(1) do
-                    len.times {readBytes << @spr.getc}
+                    len.times {readBytes << @sp.getbyte}
                     readBytes.reverse!
 
                     @data.select{|data| data['valid']==1}.each do |row| #do we need to revert this??
@@ -236,6 +236,7 @@ class MotorControlBoard
             rescue
                 puts 'Timeout to read with mask ' + mask
                 puts 'Read ' + readBytes.length.to_s + '/' + len.to_s + ' bytes'
+                puts 'READ:' + readBytes.to_s
             end
             return result
         end

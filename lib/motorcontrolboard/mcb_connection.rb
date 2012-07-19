@@ -35,7 +35,6 @@ class MotorControlBoard
         parity = SerialPort::NONE
         begin
             @sp = SerialPort.new(@port, @baud_rate, data_bits, stop_bits, parity)
-            @spr = SerialPort.new(@port, @baud_rate, data_bits, stop_bits, parity)
             @open = true
 
         rescue
@@ -56,7 +55,6 @@ class MotorControlBoard
         if @open
             @open = false
             @sp.close
-            @spr.close
         end
     end
 
@@ -88,19 +86,6 @@ class MotorControlBoard
         string.each_char do |char| 
             sendC(char) 
         end
-        # puts 'sent: ' + string
-        # puts 'waiting for return'
-        # rec = ''
-        # string.length.times {rec << @sp.getc}
-        # puts 'received: ' + rec
-        # match = (string.eql? rec.force_encoding('ASCII-8BIT'))
-        # puts 'equal: ' + match.to_s
-        # if !match
-        #     string.length.times.with_index do |i| 
-        #         puts string[i].ord + ' ' + rec[i].force_encoding('ASCII-8BIT').ord + ' ' + (string[i].encode('ASCII-8BIT') == rec[i].force_encoding('ASCII-8BIT')).to_s
-        #     end
-        # end
-
     end
 
     def startByte()
